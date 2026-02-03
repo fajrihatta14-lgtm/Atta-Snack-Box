@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atta Snack Box</title>
+<style>
+body{font-family:Arial;background:#0b1220;color:white;margin:0}
+header{background:#111827;padding:15px;display:flex;align-items:center}
+header img{width:50px;border-radius:10px;margin-right:10px}
+nav a{color:white;margin:0 10px;text-decoration:none;font-weight:bold}
+section{padding:40px 20px}
+.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px}
+.card{background:#1f2933;padding:15px;border-radius:10px}
+button{padding:10px 15px;border:none;border-radius:8px;background:#22c55e;color:black;font-weight:bold;cursor:pointer}
+footer{background:#111827;text-align:center;padding:15px}
+</style>
+</head>
+<body>
+
+<header>
+<img src="logo.png">
+<h2>Atta Snack Box</h2>
+<nav style="margin-left:auto">
+<a href="#home">Home</a>
+<a href="#menu">Menu</a>
+<a href="#tentang">Tentang</a>
+<a href="#kontak">Kontak</a>
+</nav>
+</header>
+
+<section id="home">
+<h1>Selamat Datang di Atta Snack Box</h1>
+<p>Pesan snack box & kue dengan mudah, cepat, dan terpercaya.</p>
+<button onclick="order()">Pesan Sekarang</button>
+</section>
+
+<section id="menu">
+<h2>Menu Kami</h2>
+<div class="menu">
+<div class="card">Snack Box Hemat<br>Rp15.000</div>
+<div class="card">Snack Box Premium<br>Rp25.000</div>
+<div class="card">Risoles Mayo<br>Rp3.500</div>
+<div class="card">Nastar<br>Rp80.000</div>
+</div>
+</section>
+
+<section id="tentang">
+<h2>Tentang Kami</h2>
+<p>Kami menyediakan snack box dan kue berkualitas untuk acara Anda.</p>
+</section>
+
+<section id="kontak">
+<h2>Kontak & Pembayaran</h2>
+<p>📱 WhatsApp: 083145536101</p>
+<p>🏦 BCA: 3100453222 a.n Fajri Hatta</p>
+<p>💳 QRIS tersedia</p>
+<button onclick="order()">Kirim Pesanan via WhatsApp</button>
+</section>
+
+<footer>
+&copy; 2026 Atta Snack Box
+</footer>
+
+<script>
+function order(){
+let text = "Halo Atta Snack Box, saya mau pesan snack box.";
+window.open("https://wa.me/6283145536101?text="+encodeURIComponent(text));
+}
+</script>
+
+</body>
+</html>
