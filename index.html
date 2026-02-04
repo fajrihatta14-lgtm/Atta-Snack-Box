@@ -1,74 +1,425 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Atta Snack Box</title>
-<style>
-body{font-family:Arial;background:#0b1220;color:white;margin:0}
-header{background:#111827;padding:15px;display:flex;align-items:center}
-header img{width:50px;border-radius:10px;margin-right:10px}
-nav a{color:white;margin:0 10px;text-decoration:none;font-weight:bold}
-section{padding:40px 20px}
-.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px}
-.card{background:#1f2933;padding:15px;border-radius:10px}
-button{padding:10px 15px;border:none;border-radius:8px;background:#22c55e;color:black;font-weight:bold;cursor:pointer}
-footer{background:#111827;text-align:center;padding:15px}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atta Snack Box</title>
+  <meta name="description" content="Atta Snack Box — Pemesanan snack box, nasi box, kue, dan minuman. Pembayaran transfer BCA / QRIS. Order via WhatsApp." />
+  <style>
+    :root{
+      --bg:#0b1220;
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --accent:#fbbf24;
+      --accent2:#22c55e;
+      --line:rgba(255,255,255,.08);
+      --shadow: 0 12px 35px rgba(0,0,0,.35);
+      --radius:18px;
+      --max:1100px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background:
+        radial-gradient(1200px 600px at 15% 10%, rgba(251,191,36,.18), transparent 55%),
+        radial-gradient(900px 500px at 80% 0%, rgba(34,197,94,.12), transparent 50%),
+        var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px;}
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.75);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0; gap:14px;}
+    .brand{display:flex; align-items:center; gap:12px; text-decoration:none;}
+    .brand img{width:44px;height:44px;border-radius:12px; object-fit:cover; box-shadow:0 10px 22px rgba(0,0,0,.35); border:1px solid rgba(255,255,255,.10);}
+    .brand .t{line-height:1.1}
+    .brand .t b{display:block; font-size:15px; letter-spacing:.2px}
+    .brand .t span{display:block; font-size:12px; color:var(--muted)}
+    .links{display:flex; gap:14px; flex-wrap:wrap}
+    .links a{font-size:13px; color:var(--muted); text-decoration:none; padding:8px 10px; border-radius:12px;}
+    .links a:hover{background:rgba(255,255,255,.06); color:var(--text)}
+    .cta{display:flex; gap:10px; align-items:center}
+    .btn{
+      border:0; cursor:pointer; padding:10px 12px; border-radius:14px;
+      font-weight:700; font-size:13px; display:inline-flex; gap:8px; align-items:center; justify-content:center;
+      text-decoration:none;
+    }
+    .btn.primary{background:linear-gradient(135deg, var(--accent), #fde68a); color:#111827;}
+    .btn.ghost{background:rgba(255,255,255,.06); color:var(--text); border:1px solid rgba(255,255,255,.10);}
+    .btn.whatsapp{background:linear-gradient(135deg, var(--accent2), #86efac); color:#052e16;}
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .hero{padding:34px 0 10px}
+    .heroGrid{display:grid; grid-template-columns: 1.15fr .85fr; gap:16px; align-items:stretch}
+    @media (max-width: 880px){.heroGrid{grid-template-columns:1fr}}
+    .heroCard{padding:22px}
+    h1{margin:0 0 10px; font-size:28px; letter-spacing:.2px}
+    p{margin:0; color:var(--muted); line-height:1.55}
+    .pill{display:inline-flex; gap:8px; align-items:center; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.05); color:var(--text); padding:8px 10px; border-radius:999px; font-size:12px; margin-bottom:12px}
+    .row{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+    .mini{font-size:12px; color:var(--muted); margin-top:12px}
+    .side{padding:18px}
+    .side h3{margin:0 0 10px; font-size:14px}
+    .form{display:grid; gap:10px}
+    .inp{width:100%; padding:12px 12px; border-radius:14px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.22); color:var(--text); outline:none}
+    .inp::placeholder{color:#6b7280}
+    .two{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+    @media (max-width: 700px){.two{grid-template-columns:1fr}}
+    .section{padding:26px 0}
+    .section h2{margin:0 0 10px; font-size:18px}
+    .section .sub{color:var(--muted); font-size:13px; margin-bottom:14px}
+    .grid{display:grid; grid-template-columns:repeat(12, 1fr); gap:12px}
+    .tile{grid-column: span 4; background:rgba(255,255,255,.04); border:1px solid var(--line); border-radius:18px; overflow:hidden}
+    .tile img{width:100%; height:220px; object-fit:cover; display:block}
+    .tile .cap{padding:12px}
+    .tile .cap b{display:block; font-size:13px}
+    .tile .cap span{display:block; font-size:12px; color:var(--muted); margin-top:4px}
+    .tile .cap .actions{display:flex; gap:10px; margin-top:10px; flex-wrap:wrap}
+    .tile .cap .actions .btn{padding:9px 10px; border-radius:12px}
+    @media (max-width: 980px){.tile{grid-column: span 6;}}
+    @media (max-width: 560px){.tile{grid-column: span 12;} .tile img{height:240px}}
+    .menuGrid{display:grid; grid-template-columns:repeat(12, 1fr); gap:12px}
+    .menuCard{grid-column:span 4; background:rgba(255,255,255,.04); border:1px solid var(--line); border-radius:18px; padding:14px}
+    .menuCard h3{margin:0 0 6px; font-size:14px}
+    .menuCard .price{font-weight:800; color:var(--accent); margin-bottom:8px}
+    .menuCard ul{margin:0; padding-left:18px; color:var(--muted); font-size:12px; line-height:1.6}
+    .menuCard .btn{margin-top:12px; width:100%}
+    @media (max-width: 980px){.menuCard{grid-column:span 6}}
+    @media (max-width: 560px){.menuCard{grid-column:span 12}}
+    .payGrid{display:grid; grid-template-columns: 1fr 1fr; gap:12px}
+    @media (max-width: 880px){.payGrid{grid-template-columns:1fr}}
+    .payCard{padding:16px}
+    .payCard b{display:block; margin-bottom:8px}
+    .payCard .box{background:rgba(255,255,255,.05); border:1px solid var(--line); border-radius:14px; padding:12px; color:var(--text)}
+    .payCard img{width:100%; max-width:260px; border-radius:16px; border:1px solid rgba(255,255,255,.10); background:#fff}
+    footer{border-top:1px solid var(--line); margin-top:22px; padding:18px 0 30px; color:var(--muted); font-size:12px}
+    .toast{position:fixed; left:50%; transform:translateX(-50%); bottom:16px; background:#111827; border:1px solid rgba(255,255,255,.12); color:var(--text); padding:10px 12px; border-radius:14px; box-shadow:var(--shadow); display:none; z-index:2000; font-size:13px}
+    .toast.show{display:block}
+    .sep{height:1px;background:var(--line); margin:12px 0}
+    .muted{color:var(--muted)}
+    .modal{
+      position:fixed; inset:0; display:none; align-items:center; justify-content:center;
+      background:rgba(0,0,0,.72); padding:18px; z-index:1000;
+    }
+    .modal.open{display:flex}
+    .modalBox{max-width:900px; width:100%; background:#0b1220; border:1px solid rgba(255,255,255,.12); border-radius:18px; overflow:hidden; box-shadow: 0 30px 80px rgba(0,0,0,.6)}
+    .modalTop{display:flex; justify-content:space-between; align-items:center; padding:10px 12px; border-bottom:1px solid var(--line)}
+    .modalTop b{font-size:13px}
+    .x{background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12); color:var(--text); border-radius:12px; padding:8px 10px; cursor:pointer}
+    .modalImg{width:100%; height:auto; display:block; max-height:76vh; object-fit:contain; background:#000}
+  </style>
 </head>
 <body>
 
 <header>
-<img src="logo.png">
-<h2>Atta Snack Box</h2>
-<nav style="margin-left:auto">
-<a href="#home">Home</a>
-<a href="#menu">Menu</a>
-<a href="#tentang">Tentang</a>
-<a href="#kontak">Kontak</a>
-</nav>
+  <div class="wrap">
+    <div class="nav">
+      <a class="brand" href="#home">
+        <img src="logo.png" alt="Atta Snack Box" />
+        <div class="t">
+          <b>Atta Snack Box</b>
+          <span>Teratas Karena Kualitas</span>
+        </div>
+      </a>
+      <div class="links">
+        <a href="#home">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#katalog">Katalog</a>
+        <a href="#bayar">Bayar</a>
+        <a href="#kontak">Kontak</a>
+      </div>
+      <div class="cta">
+        <a class="btn ghost" href="#katalog">Lihat Katalog</a>
+        <button class="btn whatsapp" onclick="openWA()">Order via WA</button>
+      </div>
+    </div>
+  </div>
 </header>
 
-<section id="home">
-<h1>Selamat Datang di Atta Snack Box</h1>
-<p>Pesan snack box & kue dengan mudah, cepat, dan terpercaya.</p>
-<button onclick="order()">Pesan Sekarang</button>
-</section>
+<main class="wrap">
+  <section id="home" class="hero">
+    <div class="heroGrid">
+      <div class="card heroCard">
+        <div class="pill">🟡 Snack Box • Nasi Box • Custom • Minuman • Aqiqah</div>
+        <h1>Pemesanan cepat untuk acara kamu</h1>
+        <p>
+          Pilih menu → isi catatan → klik order. Pembayaran via <b>Transfer BCA</b> atau <b>QRIS</b>.
+        </p>
+        <div class="row">
+          <a class="btn primary" href="#menu">🍱 Lihat Menu</a>
+          <a class="btn ghost" href="#katalog">📸 Lihat Katalog</a>
+          <button class="btn whatsapp" onclick="openWA()">💬 Order Sekarang</button>
+        </div>
+        <div class="mini">
+          WA: <b>0831-4553-6101</b> • BCA: <b>3100453222</b> a.n. <b>Fajri Hatta</b>
+        </div>
+      </div>
 
-<section id="menu">
-<h2>Menu Kami</h2>
-<div class="menu">
-<div class="card">Snack Box Hemat<br>Rp15.000</div>
-<div class="card">Snack Box Premium<br>Rp25.000</div>
-<div class="card">Risoles Mayo<br>Rp3.500</div>
-<div class="card">Nastar<br>Rp80.000</div>
+      <div class="card side">
+        <h3>Form Order (opsional)</h3>
+        <div class="form">
+          <input id="name" class="inp" placeholder="Nama kamu" />
+          <input id="phone" class="inp" placeholder="Nomor WhatsApp (contoh: 0812xxxx)" />
+          <div class="two">
+            <input id="date" class="inp" type="date" />
+            <input id="time" class="inp" type="time" />
+          </div>
+          <select id="category" class="inp"></select>
+          <textarea id="note" class="inp" rows="3" placeholder="Catatan: jumlah box, request isi, alamat, dll"></textarea>
+          <button class="btn whatsapp" onclick="openWA()">Kirim Pesanan via WhatsApp</button>
+          <div class="muted" style="font-size:12px">Tip: Klik “Detail” di katalog untuk perbesar gambar.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu" class="section">
+    <h2>Daftar Menu</h2>
+    <div class="sub">Ini daftar menu yang bisa kamu edit dengan mudah (tinggal ubah data di bagian <b>MENU_LIST</b>).</div>
+    <div id="menuGrid" class="menuGrid"></div>
+  </section>
+
+  <section id="katalog" class="section">
+    <h2>Katalog Produk</h2>
+    <div class="sub">Klik <b>Detail</b> untuk melihat gambar katalog besar.</div>
+    <div id="catalogGrid" class="grid"></div>
+  </section>
+
+  <section id="bayar" class="section">
+    <h2>Pembayaran</h2>
+    <div class="sub">Pilih metode pembayaran yang paling nyaman.</div>
+
+    <div class="payGrid">
+      <div class="card payCard">
+        <b>Transfer Bank (BCA)</b>
+        <div class="box">
+          <div><b>3100453222</b></div>
+          <div class="muted">a.n. Fajri Hatta</div>
+          <div class="sep"></div>
+          <button class="btn primary" onclick="copyText('3100453222')">📋 Copy Rekening</button>
+        </div>
+      </div>
+
+      <div class="card payCard">
+        <b>QRIS</b>
+        <div class="box" style="display:flex; gap:12px; align-items:center; flex-wrap:wrap">
+          <img src="qris.jpg" alt="QRIS Atta Snack Box" />
+          <div>
+            <div class="muted" style="margin-bottom:10px">Scan QR untuk bayar via e-wallet / m-banking.</div>
+            <button class="btn primary" onclick="openModal('QRIS Atta Snack Box','qris.jpg')">🔍 Perbesar QRIS</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontak" class="section">
+    <h2>Kontak</h2>
+    <div class="sub">Butuh bantuan atau mau request isi? Chat WhatsApp.</div>
+    <div class="card" style="padding:16px">
+      <b>WhatsApp</b>
+      <div class="muted" style="margin-top:6px">0831-4553-6101</div>
+      <div class="sep"></div>
+      <button class="btn whatsapp" onclick="openWA()">💬 Chat WhatsApp</button>
+    </div>
+  </section>
+
+  <footer>
+    © <span id="y"></span> Atta Snack Box • Teratas Karena Kualitas
+  </footer>
+</main>
+
+<!-- Modal -->
+<div id="modal" class="modal" onclick="closeModal(event)">
+  <div class="modalBox" onclick="event.stopPropagation()">
+    <div class="modalTop">
+      <b id="modalTitle">Detail</b>
+      <button class="x" onclick="closeModal()">Tutup ✕</button>
+    </div>
+    <img id="modalImg" class="modalImg" src="" alt="preview" />
+  </div>
 </div>
-</section>
 
-<section id="tentang">
-<h2>Tentang Kami</h2>
-<p>Kami menyediakan snack box dan kue berkualitas untuk acara Anda.</p>
-</section>
-
-<section id="kontak">
-<h2>Kontak & Pembayaran</h2>
-<p>📱 WhatsApp: 083145536101</p>
-<p>🏦 BCA: 3100453222 a.n Fajri Hatta</p>
-<p>💳 QRIS tersedia</p>
-<button onclick="order()">Kirim Pesanan via WhatsApp</button>
-</section>
-
-<footer>
-&copy; 2026 Atta Snack Box
-</footer>
+<div id="toast" class="toast">Tersalin ✅</div>
 
 <script>
-function order(){
-let text = "Halo Atta Snack Box, saya mau pesan snack box.";
-window.open("https://wa.me/6283145536101?text="+encodeURIComponent(text));
-}
-</script>
+  // ============================
+  // ✅ EDIT DI SINI (PALING MUDAH)
+  // ============================
+  const WA_NUMBER = "6283145536101";
+  const BANK_REK  = "3100453222";
+  const BANK_NAME = "Fajri Hatta";
 
+  // 1) Daftar Menu (kamu tinggal tambah/ubah/hapus item)
+  // - title: nama menu
+  // - price: harga (tulis angka saja)
+  // - bullets: isi/ketentuan (array)
+  // - waText: teks otomatis buat WA saat klik tombol Order di kartu menu
+  const MENU_LIST = [
+    {
+      title: "Snack Box Premium",
+      price: 18000,
+      bullets: ["Asin/Gurih 1 pcs", "Manis 3 pcs", "Teh kotak / Air mineral 600ml 1 pcs"],
+      waText: "Saya mau pesan Snack Box Premium (18K)."
+    },
+    {
+      title: "Snack Box VIP",
+      price: 16000,
+      bullets: ["Asin/Gurih 1 pcs", "Manis 2 pcs", "Teh botol / Air mineral 600ml 1 pcs"],
+      waText: "Saya mau pesan Snack Box VIP (16K)."
+    },
+    {
+      title: "Snack Box Bisnis",
+      price: 14000,
+      bullets: ["Asin/Gurih 1 pcs", "Manis 2 pcs", "Air mineral 330ml 1 pcs"],
+      waText: "Saya mau pesan Snack Box Bisnis (14K)."
+    },
+    {
+      title: "Snack Box Ekonomis",
+      price: 11000,
+      bullets: ["Asin/Gurih 1 pcs", "Manis 2 pcs", "Air mineral 220ml 1 pcs"],
+      waText: "Saya mau pesan Snack Box Ekonomis (11K)."
+    },
+    {
+      title: "Snack Box Hemat",
+      price: 7000,
+      bullets: ["Asin/Gurih 1 pcs", "Manis 1 pcs", "Air mineral 220ml 1 pcs"],
+      waText: "Saya mau pesan Snack Box Hemat (7K)."
+    },
+    {
+      title: "Snack Custom",
+      price: 0,
+      bullets: ["Snack & minuman bisa request", "Minimal 25 box per item kue", "Cocok untuk acara kantor & keluarga"],
+      waText: "Saya mau pesan Snack Custom. Bisa request isi & harga?"
+    },
+  ];
+
+  // 2) Katalog (pakai foto yang kamu kirim)
+  const CATALOG_LIST = [
+    { title:"Snack Box", img:"katalog-snackbox.jpg", desc:"Paket Hemat • Bisnis • VIP • Premium • Custom" },
+    { title:"Snack Custom", img:"snack-custom.jpg", desc:"Minimal pemesanan 25 box per item kue" },
+    { title:"Paket Aqiqah", img:"paket-aqiqah.jpg", desc:"Gulai Kari • Gulai Kurma • Sertifikat • Acar" },
+    { title:"Nasi Box", img:"katalog-nasibox.jpg", desc:"Contoh menu nasi box (sesuai katalog)" },
+    { title:"Minuman", img:"katalog-minuman.jpg", desc:"Daftar minuman & harga (sesuai katalog)" },
+  ];
+
+  // ============================
+  // Render UI (nggak perlu diedit)
+  // ============================
+  document.getElementById("y").textContent = new Date().getFullYear();
+
+  function rupiah(n){
+    try{
+      return new Intl.NumberFormat("id-ID", { style:"currency", currency:"IDR", maximumFractionDigits:0 }).format(n);
+    }catch(e){ return "Rp " + n; }
+  }
+
+  // isi dropdown kategori dari menu + katalog
+  const catSel = document.getElementById("category");
+  const cats = Array.from(new Set([...MENU_LIST.map(x=>x.title), ...CATALOG_LIST.map(x=>x.title)]));
+  cats.forEach(c=>{
+    const opt = document.createElement("option");
+    opt.value = c;
+    opt.textContent = c;
+    catSel.appendChild(opt);
+  });
+
+  // render menu cards
+  const menuGrid = document.getElementById("menuGrid");
+  MENU_LIST.forEach(item=>{
+    const card = document.createElement("div");
+    card.className = "menuCard";
+    card.innerHTML = `
+      <h3>${item.title}</h3>
+      <div class="price">${item.price ? rupiah(item.price) : "Hubungi admin"}</div>
+      <ul>${(item.bullets||[]).map(b=>`<li>${b}</li>`).join("")}</ul>
+      <button class="btn whatsapp" type="button">Order Menu Ini</button>
+    `;
+    card.querySelector("button").onclick = ()=> openWA(item.title, item.waText || "");
+    menuGrid.appendChild(card);
+  });
+
+  // render catalog tiles
+  const catGrid = document.getElementById("catalogGrid");
+  CATALOG_LIST.forEach(it=>{
+    const tile = document.createElement("article");
+    tile.className = "tile";
+    tile.innerHTML = `
+      <img src="${it.img}" alt="${it.title}"/>
+      <div class="cap">
+        <b>${it.title}</b>
+        <span>${it.desc || ""}</span>
+        <div class="actions">
+          <button class="btn ghost" type="button">Detail</button>
+          <button class="btn whatsapp" type="button">Order</button>
+        </div>
+      </div>
+    `;
+    const [btnDetail, btnOrder] = tile.querySelectorAll("button");
+    btnDetail.onclick = ()=> openModal(it.title, it.img);
+    btnOrder.onclick  = ()=> openWA(it.title, "Saya mau pesan " + it.title + ".");
+    catGrid.appendChild(tile);
+  });
+
+  function openWA(categoryFromButton, extraText){
+    const name = (document.getElementById("name").value || "").trim();
+    const phone = (document.getElementById("phone").value || "").trim();
+    const date = document.getElementById("date").value || "";
+    const time = document.getElementById("time").value || "";
+    const cat  = categoryFromButton || (document.getElementById("category").value || "Snack Box");
+    const note = (document.getElementById("note").value || "").trim();
+
+    const lines = [];
+    lines.push("Halo Atta Snack Box, saya mau pesan 😊");
+    lines.push("");
+    lines.push("📌 *Kategori/Menu:* " + cat);
+    if(extraText){ lines.push("🧾 *Detail:* " + extraText); }
+    if(name)  lines.push("👤 *Nama:* " + name);
+    if(phone) lines.push("📱 *WA:* " + phone);
+    if(date || time) lines.push("📅 *Jadwal:* " + [date, time].filter(Boolean).join(" "));
+    if(note)  { lines.push(""); lines.push("📝 *Catatan:*"); lines.push(note); }
+    lines.push("");
+    lines.push("💳 *Pembayaran:* Transfer BCA " + BANK_REK + " a.n. " + BANK_NAME + " / QRIS");
+    lines.push("Terima kasih 🙏");
+
+    const text = lines.join("\n");
+    window.open("https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(text), "_blank");
+  }
+
+  function openModal(title, imgSrc){
+    document.getElementById("modalTitle").textContent = title;
+    document.getElementById("modalImg").src = imgSrc;
+    document.getElementById("modal").classList.add("open");
+  }
+  function closeModal(){
+    document.getElementById("modal").classList.remove("open");
+  }
+
+  async function copyText(t){
+    try{
+      await navigator.clipboard.writeText(t);
+      showToast("Tersalin ✅");
+    }catch(err){
+      showToast("Gagal copy");
+    }
+  }
+  function showToast(msg){
+    const el = document.getElementById("toast");
+    el.textContent = msg;
+    el.classList.add("show");
+    setTimeout(()=>el.classList.remove("show"), 1400);
+  }
+</script>
 </body>
 </html>
