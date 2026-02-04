@@ -4,140 +4,118 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Atta Snack Box</title>
-  <meta name="description" content="Atta Snack Box — Pemesanan snack box, nasi box, kue, dan minuman. Pembayaran transfer BCA / QRIS. Order via WhatsApp." />
+  <meta name="description" content="Atta Snack Box — Pemesanan snack box, nasi box, kue, dan minuman. Pembayaran transfer bank / QRIS. Order via WhatsApp." />
   <style>
     :root{
-      --bg:#0b1220;
-      --text:#e5e7eb;
-      --muted:#9ca3af;
-      --accent:#fbbf24;
-      --accent2:#22c55e;
-      --line:rgba(255,255,255,.08);
-      --shadow: 0 12px 35px rgba(0,0,0,.35);
-      --radius:18px;
-      --max:1100px;
+      --bg:#0b1220; --text:#e5e7eb; --muted:#9ca3af;
+      --accent:#fbbf24; --accent2:#22c55e;
+      --line:rgba(255,255,255,.08); --shadow:0 12px 35px rgba(0,0,0,.35);
+      --radius:18px; --max:1100px;
     }
     *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      background:
-        radial-gradient(1200px 600px at 15% 10%, rgba(251,191,36,.18), transparent 55%),
-        radial-gradient(900px 500px at 80% 0%, rgba(34,197,94,.12), transparent 50%),
-        var(--bg);
-      color:var(--text);
-    }
+    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;background:
+      radial-gradient(1200px 600px at 15% 10%, rgba(251,191,36,.18), transparent 55%),
+      radial-gradient(900px 500px at 80% 0%, rgba(34,197,94,.12), transparent 50%), var(--bg);
+      color:var(--text);}
     a{color:inherit}
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px;}
-    header{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(10px);
-      background: rgba(11,18,32,.75);
-      border-bottom:1px solid var(--line);
-    }
-    .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0; gap:14px;}
-    .brand{display:flex; align-items:center; gap:12px; text-decoration:none;}
-    .brand img{width:44px;height:44px;border-radius:12px; object-fit:cover; box-shadow:0 10px 22px rgba(0,0,0,.35); border:1px solid rgba(255,255,255,.10);}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 18px;}
+    header{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:rgba(11,18,32,.75);border-bottom:1px solid var(--line);}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:14px;}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+    .brand img{width:44px;height:44px;border-radius:12px;object-fit:cover;box-shadow:0 10px 22px rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.10);}
     .brand .t{line-height:1.1}
-    .brand .t b{display:block; font-size:15px; letter-spacing:.2px}
-    .brand .t span{display:block; font-size:12px; color:var(--muted)}
-    .links{display:flex; gap:14px; flex-wrap:wrap}
-    .links a{font-size:13px; color:var(--muted); text-decoration:none; padding:8px 10px; border-radius:12px;}
-    .links a:hover{background:rgba(255,255,255,.06); color:var(--text)}
-    .cta{display:flex; gap:10px; align-items:center}
-    .btn{
-      border:0; cursor:pointer; padding:10px 12px; border-radius:14px;
-      font-weight:700; font-size:13px; display:inline-flex; gap:8px; align-items:center; justify-content:center;
-      text-decoration:none;
-    }
-    .btn.primary{background:linear-gradient(135deg, var(--accent), #fde68a); color:#111827;}
-    .btn.ghost{background:rgba(255,255,255,.06); color:var(--text); border:1px solid rgba(255,255,255,.10);}
-    .btn.whatsapp{background:linear-gradient(135deg, var(--accent2), #86efac); color:#052e16;}
-    .card{
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      overflow:hidden;
-    }
+    .brand .t b{display:block;font-size:15px;letter-spacing:.2px}
+    .brand .t span{display:block;font-size:12px;color:var(--muted)}
+    .links{display:flex;gap:14px;flex-wrap:wrap}
+    .links a{font-size:13px;color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:12px;}
+    .links a:hover{background:rgba(255,255,255,.06);color:var(--text)}
+    .cta{display:flex;gap:10px;align-items:center}
+    .btn{border:0;cursor:pointer;padding:10px 12px;border-radius:14px;font-weight:700;font-size:13px;display:inline-flex;gap:8px;align-items:center;justify-content:center;text-decoration:none}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),#fde68a);color:#111827;}
+    .btn.ghost{background:rgba(255,255,255,.06);color:var(--text);border:1px solid rgba(255,255,255,.10);}
+    .btn.whatsapp{background:linear-gradient(135deg,var(--accent2),#86efac);color:#052e16;}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
     .hero{padding:34px 0 10px}
-    .heroGrid{display:grid; grid-template-columns: 1.15fr .85fr; gap:16px; align-items:stretch}
-    @media (max-width: 880px){.heroGrid{grid-template-columns:1fr}}
+    .heroGrid{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;align-items:stretch}
+    @media (max-width:880px){.heroGrid{grid-template-columns:1fr}}
     .heroCard{padding:22px}
-    h1{margin:0 0 10px; font-size:28px; letter-spacing:.2px}
-    p{margin:0; color:var(--muted); line-height:1.55}
-    .pill{display:inline-flex; gap:8px; align-items:center; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.05); color:var(--text); padding:8px 10px; border-radius:999px; font-size:12px; margin-bottom:12px}
-    .row{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
-    .mini{font-size:12px; color:var(--muted); margin-top:12px}
+    h1{margin:0 0 10px;font-size:28px;letter-spacing:.2px}
+    p{margin:0;color:var(--muted);line-height:1.55}
+    .pill{display:inline-flex;gap:8px;align-items:center;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);color:var(--text);padding:8px 10px;border-radius:999px;font-size:12px;margin-bottom:12px}
+    .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .mini{font-size:12px;color:var(--muted);margin-top:12px}
     .side{padding:18px}
-    .side h3{margin:0 0 10px; font-size:14px}
-    .form{display:grid; gap:10px}
-    .inp{width:100%; padding:12px 12px; border-radius:14px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.22); color:var(--text); outline:none}
+    .side h3{margin:0 0 10px;font-size:14px}
+    .form{display:grid;gap:10px}
+    .inp{width:100%;padding:12px 12px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.22);color:var(--text);outline:none}
     .inp::placeholder{color:#6b7280}
-    .two{display:grid; grid-template-columns:1fr 1fr; gap:10px}
-    @media (max-width: 700px){.two{grid-template-columns:1fr}}
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    @media (max-width:700px){.two{grid-template-columns:1fr}}
     .section{padding:26px 0}
-    .section h2{margin:0 0 10px; font-size:18px}
-    .section .sub{color:var(--muted); font-size:13px; margin-bottom:14px}
-    .grid{display:grid; grid-template-columns:repeat(12, 1fr); gap:12px}
-    .tile{grid-column: span 4; background:rgba(255,255,255,.04); border:1px solid var(--line); border-radius:18px; overflow:hidden}
-    .tile img{width:100%; height:220px; object-fit:cover; display:block}
+    .section h2{margin:0 0 10px;font-size:18px}
+    .section .sub{color:var(--muted);font-size:13px;margin-bottom:14px}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
+    .tile{grid-column:span 4;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+    .tile img{width:100%;height:220px;object-fit:cover;display:block}
     .tile .cap{padding:12px}
-    .tile .cap b{display:block; font-size:13px}
-    .tile .cap span{display:block; font-size:12px; color:var(--muted); margin-top:4px}
-    .tile .cap .actions{display:flex; gap:10px; margin-top:10px; flex-wrap:wrap}
-    .tile .cap .actions .btn{padding:9px 10px; border-radius:12px}
-    @media (max-width: 980px){.tile{grid-column: span 6;}}
-    @media (max-width: 560px){.tile{grid-column: span 12;} .tile img{height:240px}}
-    .menuGrid{display:grid; grid-template-columns:repeat(12, 1fr); gap:12px}
-    .menuCard{grid-column:span 4; background:rgba(255,255,255,.04); border:1px solid var(--line); border-radius:18px; padding:14px}
-    .menuCard h3{margin:0 0 6px; font-size:14px}
-    .menuCard .price{font-weight:800; color:var(--accent); margin-bottom:8px}
-    .menuCard ul{margin:0; padding-left:18px; color:var(--muted); font-size:12px; line-height:1.6}
-    .menuCard .btn{margin-top:12px; width:100%}
-    @media (max-width: 980px){.menuCard{grid-column:span 6}}
-    @media (max-width: 560px){.menuCard{grid-column:span 12}}
-    .payGrid{display:grid; grid-template-columns: 1fr 1fr; gap:12px}
-    @media (max-width: 880px){.payGrid{grid-template-columns:1fr}}
+    .tile .cap b{display:block;font-size:13px}
+    .tile .cap span{display:block;font-size:12px;color:var(--muted);margin-top:4px}
+    .tile .cap .actions{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+    .tile .cap .actions .btn{padding:9px 10px;border-radius:12px}
+    @media (max-width:980px){.tile{grid-column:span 6}}
+    @media (max-width:560px){.tile{grid-column:span 12}.tile img{height:240px}}
+    .menuGrid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
+    .menuCard{grid-column:span 4;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:18px;padding:14px}
+    .menuCard h3{margin:0 0 6px;font-size:14px}
+    .menuCard .price{font-weight:800;color:var(--accent);margin-bottom:8px}
+    .menuCard ul{margin:0;padding-left:18px;color:var(--muted);font-size:12px;line-height:1.6}
+    .menuCard .btn{margin-top:12px;width:100%}
+    @media (max-width:980px){.menuCard{grid-column:span 6}}
+    @media (max-width:560px){.menuCard{grid-column:span 12}}
+    .payGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width:880px){.payGrid{grid-template-columns:1fr}}
     .payCard{padding:16px}
-    .payCard b{display:block; margin-bottom:8px}
-    .payCard .box{background:rgba(255,255,255,.05); border:1px solid var(--line); border-radius:14px; padding:12px; color:var(--text)}
-    .payCard img{width:100%; max-width:260px; border-radius:16px; border:1px solid rgba(255,255,255,.10); background:#fff}
-    footer{border-top:1px solid var(--line); margin-top:22px; padding:18px 0 30px; color:var(--muted); font-size:12px}
-    .toast{position:fixed; left:50%; transform:translateX(-50%); bottom:16px; background:#111827; border:1px solid rgba(255,255,255,.12); color:var(--text); padding:10px 12px; border-radius:14px; box-shadow:var(--shadow); display:none; z-index:2000; font-size:13px}
+    .payCard b{display:block;margin-bottom:8px}
+    .payCard .box{background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:14px;padding:12px;color:var(--text)}
+    .banks{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .bankBtn{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:var(--text)}
+    .bankBtn.active{border-color:rgba(34,197,94,.7);background:rgba(34,197,94,.12)}
+    .bankLine{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:10px 0}
+    .bankLine code{background:rgba(0,0,0,.35);padding:6px 10px;border-radius:12px;border:1px solid rgba(255,255,255,.10)}
+    .proof{border:1px dashed rgba(255,255,255,.18);background:rgba(0,0,0,.18);padding:12px;border-radius:14px;margin-top:12px}
+    .proof small{color:var(--muted)}
+    .preview{margin-top:10px;display:none}
+    .preview img{max-width:220px;border-radius:14px;border:1px solid rgba(255,255,255,.12)}
+    footer{border-top:1px solid var(--line);margin-top:22px;padding:18px 0 30px;color:var(--muted);font-size:12px}
+    .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:16px;background:#111827;border:1px solid rgba(255,255,255,.12);color:var(--text);padding:10px 12px;border-radius:14px;box-shadow:var(--shadow);display:none;z-index:2000;font-size:13px}
     .toast.show{display:block}
-    .sep{height:1px;background:var(--line); margin:12px 0}
-    .muted{color:var(--muted)}
-    .modal{
-      position:fixed; inset:0; display:none; align-items:center; justify-content:center;
-      background:rgba(0,0,0,.72); padding:18px; z-index:1000;
-    }
+    .sep{height:1px;background:var(--line);margin:12px 0}
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.72);padding:18px;z-index:1000}
     .modal.open{display:flex}
-    .modalBox{max-width:900px; width:100%; background:#0b1220; border:1px solid rgba(255,255,255,.12); border-radius:18px; overflow:hidden; box-shadow: 0 30px 80px rgba(0,0,0,.6)}
-    .modalTop{display:flex; justify-content:space-between; align-items:center; padding:10px 12px; border-bottom:1px solid var(--line)}
+    .modalBox{max-width:900px;width:100%;background:#0b1220;border:1px solid rgba(255,255,255,.12);border-radius:18px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+    .modalTop{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line)}
     .modalTop b{font-size:13px}
-    .x{background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12); color:var(--text); border-radius:12px; padding:8px 10px; cursor:pointer}
-    .modalImg{width:100%; height:auto; display:block; max-height:76vh; object-fit:contain; background:#000}
+    .x{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:var(--text);border-radius:12px;padding:8px 10px;cursor:pointer}
+    .modalImg{width:100%;height:auto;display:block;max-height:76vh;object-fit:contain;background:#000}
+    .statusBox{padding:16px}
+    .statusResult{margin-top:12px;padding:12px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.18);display:none}
+    .tag{display:inline-flex;align-items:center;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:800}
+    .tag.pending{background:rgba(251,191,36,.18);border:1px solid rgba(251,191,36,.35);color:#fde68a}
+    .tag.process{background:rgba(34,197,94,.16);border:1px solid rgba(34,197,94,.35);color:#bbf7d0}
+    .tag.done{background:rgba(59,130,246,.16);border:1px solid rgba(59,130,246,.35);color:#bfdbfe}
+    .tag.cancel{background:rgba(251,113,133,.16);border:1px solid rgba(251,113,133,.35);color:#fecdd3}
   </style>
 </head>
 <body>
-
 <header>
   <div class="wrap">
     <div class="nav">
       <a class="brand" href="#home">
         <img src="logo.png" alt="Atta Snack Box" />
-        <div class="t">
-          <b>Atta Snack Box</b>
-          <span>Teratas Karena Kualitas</span>
-        </div>
+        <div class="t"><b>Atta Snack Box</b><span>Teratas Karena Kualitas</span></div>
       </a>
       <div class="links">
-        <a href="#home">Home</a>
-        <a href="#menu">Menu</a>
-        <a href="#katalog">Katalog</a>
-        <a href="#bayar">Bayar</a>
-        <a href="#kontak">Kontak</a>
+        <a href="#home">Home</a><a href="#menu">Menu</a><a href="#katalog">Katalog</a><a href="#bayar">Bayar</a><a href="#status">Status</a><a href="#kontak">Kontak</a>
       </div>
       <div class="cta">
         <a class="btn ghost" href="#katalog">Lihat Katalog</a>
@@ -153,21 +131,18 @@
       <div class="card heroCard">
         <div class="pill">🟡 Snack Box • Nasi Box • Custom • Minuman • Aqiqah</div>
         <h1>Pemesanan cepat untuk acara kamu</h1>
-        <p>
-          Pilih menu → isi catatan → klik order. Pembayaran via <b>Transfer BCA</b> atau <b>QRIS</b>.
-        </p>
+        <p>Pilih menu → isi catatan → pilih bank → klik order. Upload bukti transfer & cek status bisa aktif jika pakai Google Sheet API.</p>
         <div class="row">
           <a class="btn primary" href="#menu">🍱 Lihat Menu</a>
-          <a class="btn ghost" href="#katalog">📸 Lihat Katalog</a>
+          <a class="btn ghost" href="#bayar">💳 Pembayaran</a>
+          <a class="btn ghost" href="#status">🧾 Cek Status</a>
           <button class="btn whatsapp" onclick="openWA()">💬 Order Sekarang</button>
         </div>
-        <div class="mini">
-          WA: <b>0831-4553-6101</b> • BCA: <b>3100453222</b> a.n. <b>Fajri Hatta</b>
-        </div>
+        <div class="mini">WA: <b>0852-6315-0282</b> • Transfer: <b>BRI / BNI</b> a.n. <b>Susita Herawati, SE</b></div>
       </div>
 
       <div class="card side">
-        <h3>Form Order (opsional)</h3>
+        <h3>Form Order</h3>
         <div class="form">
           <input id="name" class="inp" placeholder="Nama kamu" />
           <input id="phone" class="inp" placeholder="Nomor WhatsApp (contoh: 0812xxxx)" />
@@ -178,7 +153,7 @@
           <select id="category" class="inp"></select>
           <textarea id="note" class="inp" rows="3" placeholder="Catatan: jumlah box, request isi, alamat, dll"></textarea>
           <button class="btn whatsapp" onclick="openWA()">Kirim Pesanan via WhatsApp</button>
-          <div class="muted" style="font-size:12px">Tip: Klik “Detail” di katalog untuk perbesar gambar.</div>
+          <div class="muted" style="font-size:12px">Tip: pilih bank di bagian Pembayaran untuk auto-copy rekening.</div>
         </div>
       </div>
     </div>
@@ -186,7 +161,7 @@
 
   <section id="menu" class="section">
     <h2>Daftar Menu</h2>
-    <div class="sub">Ini daftar menu yang bisa kamu edit dengan mudah (tinggal ubah data di bagian <b>MENU_LIST</b>).</div>
+    <div class="sub">Edit daftar menu di bagian <b>MENU_LIST</b>.</div>
     <div id="menuGrid" class="menuGrid"></div>
   </section>
 
@@ -198,16 +173,23 @@
 
   <section id="bayar" class="section">
     <h2>Pembayaran</h2>
-    <div class="sub">Pilih metode pembayaran yang paling nyaman.</div>
-
+    <div class="sub">Klik bank untuk auto-copy rekening. Upload bukti transfer (opsional).</div>
     <div class="payGrid">
       <div class="card payCard">
-        <b>Transfer Bank (BCA)</b>
+        <b>Transfer Bank</b>
         <div class="box">
-          <div><b>3100453222</b></div>
-          <div class="muted">a.n. Fajri Hatta</div>
-          <div class="sep"></div>
-          <button class="btn primary" onclick="copyText('3100453222')">📋 Copy Rekening</button>
+          <div class="muted">a.n. <b>Susita Herawati, SE</b></div>
+          <div class="banks" id="bankButtons"></div>
+          <div id="bankInfo" style="margin-top:10px"><div class="bankLine"><span class="muted">Pilih bank di atas</span></div></div>
+
+          <div class="proof">
+            <b>Upload bukti transfer (opsional)</b><br/>
+            <small>Setelah pilih file, preview akan muncul. Untuk menyimpan bukti & status otomatis, aktifkan Google Sheet API.</small>
+            <div style="margin-top:10px">
+              <input id="proofFile" class="inp" type="file" accept="image/*" />
+              <div class="preview" id="proofPreview"><img id="proofImg" alt="preview"/></div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -224,29 +206,36 @@
     </div>
   </section>
 
+  <section id="status" class="section">
+    <h2>Cek Status Pesanan</h2>
+    <div class="sub">Masukkan Order ID untuk melihat status (butuh API). Kalau belum, tanya via WA.</div>
+    <div class="card statusBox">
+      <div class="two">
+        <input id="orderIdInput" class="inp" placeholder="Contoh: ASB-20260204-123000" />
+        <button class="btn primary" onclick="checkStatus()">🔎 Cek Status</button>
+      </div>
+      <div id="statusResult" class="statusResult"></div>
+      <div class="muted" style="font-size:12px; margin-top:10px">Kalau status belum aktif: klik tombol WhatsApp untuk tanya admin.</div>
+    </div>
+  </section>
+
   <section id="kontak" class="section">
     <h2>Kontak</h2>
     <div class="sub">Butuh bantuan atau mau request isi? Chat WhatsApp.</div>
     <div class="card" style="padding:16px">
       <b>WhatsApp</b>
-      <div class="muted" style="margin-top:6px">0831-4553-6101</div>
+      <div class="muted" style="margin-top:6px">0852-6315-0282</div>
       <div class="sep"></div>
       <button class="btn whatsapp" onclick="openWA()">💬 Chat WhatsApp</button>
     </div>
   </section>
 
-  <footer>
-    © <span id="y"></span> Atta Snack Box • Teratas Karena Kualitas
-  </footer>
+  <footer>© <span id="y"></span> Atta Snack Box • Teratas Karena Kualitas</footer>
 </main>
 
-<!-- Modal -->
 <div id="modal" class="modal" onclick="closeModal(event)">
   <div class="modalBox" onclick="event.stopPropagation()">
-    <div class="modalTop">
-      <b id="modalTitle">Detail</b>
-      <button class="x" onclick="closeModal()">Tutup ✕</button>
-    </div>
+    <div class="modalTop"><b id="modalTitle">Detail</b><button class="x" onclick="closeModal()">Tutup ✕</button></div>
     <img id="modalImg" class="modalImg" src="" alt="preview" />
   </div>
 </div>
@@ -254,58 +243,27 @@
 <div id="toast" class="toast">Tersalin ✅</div>
 
 <script>
-  // ============================
-  // ✅ EDIT DI SINI (PALING MUDAH)
-  // ============================
-  const WA_NUMBER = "6283145536101";
-  const BANK_REK  = "3100453222";
-  const BANK_NAME = "Fajri Hatta";
+  const WA_NUMBER = "6285263150282";
 
-  // 1) Daftar Menu (kamu tinggal tambah/ubah/hapus item)
-  // - title: nama menu
-  // - price: harga (tulis angka saja)
-  // - bullets: isi/ketentuan (array)
-  // - waText: teks otomatis buat WA saat klik tombol Order di kartu menu
-  const MENU_LIST = [
-    {
-      title: "Snack Box Premium",
-      price: 18000,
-      bullets: ["Asin/Gurih 1 pcs", "Manis 3 pcs", "Teh kotak / Air mineral 600ml 1 pcs"],
-      waText: "Saya mau pesan Snack Box Premium (18K)."
-    },
-    {
-      title: "Snack Box VIP",
-      price: 16000,
-      bullets: ["Asin/Gurih 1 pcs", "Manis 2 pcs", "Teh botol / Air mineral 600ml 1 pcs"],
-      waText: "Saya mau pesan Snack Box VIP (16K)."
-    },
-    {
-      title: "Snack Box Bisnis",
-      price: 14000,
-      bullets: ["Asin/Gurih 1 pcs", "Manis 2 pcs", "Air mineral 330ml 1 pcs"],
-      waText: "Saya mau pesan Snack Box Bisnis (14K)."
-    },
-    {
-      title: "Snack Box Ekonomis",
-      price: 11000,
-      bullets: ["Asin/Gurih 1 pcs", "Manis 2 pcs", "Air mineral 220ml 1 pcs"],
-      waText: "Saya mau pesan Snack Box Ekonomis (11K)."
-    },
-    {
-      title: "Snack Box Hemat",
-      price: 7000,
-      bullets: ["Asin/Gurih 1 pcs", "Manis 1 pcs", "Air mineral 220ml 1 pcs"],
-      waText: "Saya mau pesan Snack Box Hemat (7K)."
-    },
-    {
-      title: "Snack Custom",
-      price: 0,
-      bullets: ["Snack & minuman bisa request", "Minimal 25 box per item kue", "Cocok untuk acara kantor & keluarga"],
-      waText: "Saya mau pesan Snack Custom. Bisa request isi & harga?"
-    },
+  const BANK_OWNER = "Susita Herawati, SE";
+  const BANKS = [
+    { key:"BRI", rek:"546401001857504" },
+    { key:"BNI", rek:"1865849588" },
   ];
 
-  // 2) Katalog (pakai foto yang kamu kirim)
+  // Google Apps Script Web App (kosongkan kalau belum pakai)
+  const ORDER_API_URL = "";
+  const ORDER_API_TOKEN = "ATTA123";
+
+  const MENU_LIST = [
+    { title:"Snack Box Premium", price:18000, bullets:["Asin/Gurih 1 pcs","Manis 3 pcs","Minuman 1 pcs"], waText:"Saya mau pesan Snack Box Premium (18K)." },
+    { title:"Snack Box VIP", price:16000, bullets:["Asin/Gurih 1 pcs","Manis 2 pcs","Minuman 1 pcs"], waText:"Saya mau pesan Snack Box VIP (16K)." },
+    { title:"Snack Box Bisnis", price:14000, bullets:["Asin/Gurih 1 pcs","Manis 2 pcs","Minuman 1 pcs"], waText:"Saya mau pesan Snack Box Bisnis (14K)." },
+    { title:"Snack Box Ekonomis", price:11000, bullets:["Asin/Gurih 1 pcs","Manis 2 pcs","Minuman 1 pcs"], waText:"Saya mau pesan Snack Box Ekonomis (11K)." },
+    { title:"Snack Box Hemat", price:7000, bullets:["Asin/Gurih 1 pcs","Manis 1 pcs","Minuman 1 pcs"], waText:"Saya mau pesan Snack Box Hemat (7K)." },
+    { title:"Snack Custom", price:0, bullets:["Snack & minuman bisa request","Minimal 25 box per item kue","Cocok untuk acara kantor & keluarga"], waText:"Saya mau pesan Snack Custom. Bisa request isi & harga?" },
+  ];
+
   const CATALOG_LIST = [
     { title:"Snack Box", img:"katalog-snackbox.jpg", desc:"Paket Hemat • Bisnis • VIP • Premium • Custom" },
     { title:"Snack Custom", img:"snack-custom.jpg", desc:"Minimal pemesanan 25 box per item kue" },
@@ -314,112 +272,231 @@
     { title:"Minuman", img:"katalog-minuman.jpg", desc:"Daftar minuman & harga (sesuai katalog)" },
   ];
 
-  // ============================
-  // Render UI (nggak perlu diedit)
-  // ============================
+  let selectedBank = null;
+  let proofBase64 = "";
+
   document.getElementById("y").textContent = new Date().getFullYear();
 
   function rupiah(n){
-    try{
-      return new Intl.NumberFormat("id-ID", { style:"currency", currency:"IDR", maximumFractionDigits:0 }).format(n);
-    }catch(e){ return "Rp " + n; }
+    try{ return new Intl.NumberFormat("id-ID",{style:"currency",currency:"IDR",maximumFractionDigits:0}).format(n); }
+    catch(e){ return "Rp " + n; }
+  }
+  async function copyText(t){
+    try{ await navigator.clipboard.writeText(t); showToast("Tersalin ✅"); }
+    catch(err){ showToast("Gagal copy"); }
+  }
+  function showToast(msg){
+    const el=document.getElementById("toast");
+    el.textContent=msg; el.classList.add("show");
+    setTimeout(()=>el.classList.remove("show"),1400);
   }
 
-  // isi dropdown kategori dari menu + katalog
-  const catSel = document.getElementById("category");
-  const cats = Array.from(new Set([...MENU_LIST.map(x=>x.title), ...CATALOG_LIST.map(x=>x.title)]));
-  cats.forEach(c=>{
-    const opt = document.createElement("option");
-    opt.value = c;
-    opt.textContent = c;
-    catSel.appendChild(opt);
-  });
+  // dropdown kategori
+  const catSel=document.getElementById("category");
+  const cats=Array.from(new Set([...MENU_LIST.map(x=>x.title), ...CATALOG_LIST.map(x=>x.title)]));
+  cats.forEach(c=>{ const opt=document.createElement("option"); opt.value=c; opt.textContent=c; catSel.appendChild(opt); });
 
-  // render menu cards
-  const menuGrid = document.getElementById("menuGrid");
+  // menu
+  const menuGrid=document.getElementById("menuGrid");
   MENU_LIST.forEach(item=>{
-    const card = document.createElement("div");
-    card.className = "menuCard";
-    card.innerHTML = `
+    const card=document.createElement("div");
+    card.className="menuCard";
+    card.innerHTML=`
       <h3>${item.title}</h3>
-      <div class="price">${item.price ? rupiah(item.price) : "Hubungi admin"}</div>
+      <div class="price">${item.price?rupiah(item.price):"Hubungi admin"}</div>
       <ul>${(item.bullets||[]).map(b=>`<li>${b}</li>`).join("")}</ul>
-      <button class="btn whatsapp" type="button">Order Menu Ini</button>
-    `;
-    card.querySelector("button").onclick = ()=> openWA(item.title, item.waText || "");
+      <button class="btn whatsapp" type="button">Order Menu Ini</button>`;
+    card.querySelector("button").onclick=()=>openWA(item.title,item.waText||"");
     menuGrid.appendChild(card);
   });
 
-  // render catalog tiles
-  const catGrid = document.getElementById("catalogGrid");
+  // katalog
+  const catGrid=document.getElementById("catalogGrid");
   CATALOG_LIST.forEach(it=>{
-    const tile = document.createElement("article");
-    tile.className = "tile";
-    tile.innerHTML = `
+    const tile=document.createElement("article");
+    tile.className="tile";
+    tile.innerHTML=`
       <img src="${it.img}" alt="${it.title}"/>
       <div class="cap">
         <b>${it.title}</b>
-        <span>${it.desc || ""}</span>
+        <span>${it.desc||""}</span>
         <div class="actions">
           <button class="btn ghost" type="button">Detail</button>
           <button class="btn whatsapp" type="button">Order</button>
         </div>
-      </div>
-    `;
-    const [btnDetail, btnOrder] = tile.querySelectorAll("button");
-    btnDetail.onclick = ()=> openModal(it.title, it.img);
-    btnOrder.onclick  = ()=> openWA(it.title, "Saya mau pesan " + it.title + ".");
+      </div>`;
+    const [btnDetail, btnOrder]=tile.querySelectorAll("button");
+    btnDetail.onclick=()=>openModal(it.title,it.img);
+    btnOrder.onclick=()=>openWA(it.title,"Saya mau pesan "+it.title+".");
     catGrid.appendChild(tile);
   });
 
-  function openWA(categoryFromButton, extraText){
-    const name = (document.getElementById("name").value || "").trim();
-    const phone = (document.getElementById("phone").value || "").trim();
-    const date = document.getElementById("date").value || "";
-    const time = document.getElementById("time").value || "";
-    const cat  = categoryFromButton || (document.getElementById("category").value || "Snack Box");
-    const note = (document.getElementById("note").value || "").trim();
+  // bank selector
+  const bankButtons=document.getElementById("bankButtons");
+  const bankInfo=document.getElementById("bankInfo");
 
-    const lines = [];
-    lines.push("Halo Atta Snack Box, saya mau pesan 😊");
-    lines.push("");
-    lines.push("📌 *Kategori/Menu:* " + cat);
-    if(extraText){ lines.push("🧾 *Detail:* " + extraText); }
-    if(name)  lines.push("👤 *Nama:* " + name);
-    if(phone) lines.push("📱 *WA:* " + phone);
-    if(date || time) lines.push("📅 *Jadwal:* " + [date, time].filter(Boolean).join(" "));
-    if(note)  { lines.push(""); lines.push("📝 *Catatan:*"); lines.push(note); }
-    lines.push("");
-    lines.push("💳 *Pembayaran:* Transfer BCA " + BANK_REK + " a.n. " + BANK_NAME + " / QRIS");
-    lines.push("Terima kasih 🙏");
+  function setBank(bankKey){
+    selectedBank=BANKS.find(b=>b.key===bankKey)||null;
+    Array.from(bankButtons.querySelectorAll("button")).forEach(btn=>btn.classList.toggle("active", btn.dataset.key===bankKey));
 
-    const text = lines.join("\n");
-    window.open("https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(text), "_blank");
-  }
-
-  function openModal(title, imgSrc){
-    document.getElementById("modalTitle").textContent = title;
-    document.getElementById("modalImg").src = imgSrc;
-    document.getElementById("modal").classList.add("open");
-  }
-  function closeModal(){
-    document.getElementById("modal").classList.remove("open");
-  }
-
-  async function copyText(t){
-    try{
-      await navigator.clipboard.writeText(t);
-      showToast("Tersalin ✅");
-    }catch(err){
-      showToast("Gagal copy");
+    if(selectedBank){
+      bankInfo.innerHTML=`
+        <div class="bankLine">
+          <div><b>${selectedBank.key}</b> <span class="muted">a.n. ${BANK_OWNER}</span></div>
+          <code>${selectedBank.rek}</code>
+        </div>
+        <div class="banks">
+          <button class="btn primary" type="button" onclick="copyText('${selectedBank.rek}')">📋 Copy Rekening</button>
+          <button class="btn ghost" type="button" onclick="openWA('', 'Saya sudah memilih pembayaran via ${selectedBank.key}.')">Kirim via WA</button>
+        </div>`;
+      copyText(selectedBank.rek);
+    }else{
+      bankInfo.innerHTML=`<div class="bankLine"><span class="muted">Pilih bank di atas</span></div>`;
     }
   }
-  function showToast(msg){
-    const el = document.getElementById("toast");
-    el.textContent = msg;
-    el.classList.add("show");
-    setTimeout(()=>el.classList.remove("show"), 1400);
+
+  BANKS.forEach(b=>{
+    const btn=document.createElement("button");
+    btn.className="btn bankBtn"; btn.type="button"; btn.dataset.key=b.key; btn.textContent=b.key;
+    btn.onclick=()=>setBank(b.key);
+    bankButtons.appendChild(btn);
+  });
+
+  // proof upload
+  const proofFile=document.getElementById("proofFile");
+  const proofPreview=document.getElementById("proofPreview");
+  const proofImg=document.getElementById("proofImg");
+
+  proofFile.addEventListener("change",(e)=>{
+    const file=e.target.files && e.target.files[0];
+    proofBase64="";
+    if(!file){ proofPreview.style.display="none"; return; }
+    if(file.size>2.5*1024*1024){ showToast("Maks 2.5MB"); proofFile.value=""; proofPreview.style.display="none"; return; }
+    const reader=new FileReader();
+    reader.onload=()=>{
+      const dataUrl=String(reader.result||"");
+      proofBase64=dataUrl;
+      proofImg.src=dataUrl;
+      proofPreview.style.display="block";
+      showToast("Bukti terpilih ✅");
+    };
+    reader.readAsDataURL(file);
+  });
+
+  function buildWAText(categoryFromButton, extraText, orderId){
+    const name=(document.getElementById("name").value||"").trim();
+    const phone=(document.getElementById("phone").value||"").trim();
+    const date=document.getElementById("date").value||"";
+    const time=document.getElementById("time").value||"";
+    const cat=categoryFromButton || (document.getElementById("category").value||"Snack Box");
+    const note=(document.getElementById("note").value||"").trim();
+
+    const lines=[];
+    lines.push("Halo Atta Snack Box, saya mau pesan 😊","");
+    lines.push("📌 *Kategori/Menu:* "+cat);
+    if(extraText) lines.push("🧾 *Detail:* "+extraText);
+    if(name) lines.push("👤 *Nama:* "+name);
+    if(phone) lines.push("📱 *WA:* "+phone);
+    if(date||time) lines.push("📅 *Jadwal:* "+[date,time].filter(Boolean).join(" "));
+    if(note){ lines.push("","📝 *Catatan:*", note); }
+
+    lines.push("","💳 *Pembayaran:*");
+    if(selectedBank){
+      lines.push("- Transfer "+selectedBank.key+": "+selectedBank.rek);
+      lines.push("  a.n. "+BANK_OWNER);
+    }else{
+      lines.push("- Transfer BRI: 546401001857504");
+      lines.push("- Transfer BNI: 1865849588");
+      lines.push("  a.n. "+BANK_OWNER);
+    }
+    lines.push("- QRIS tersedia (lihat website)");
+
+    if(orderId){ lines.push("","🆔 *Order ID:* "+orderId); }
+
+    if(proofBase64){
+      lines.push("","📎 Bukti transfer sudah saya pilih di website.");
+      lines.push("Jika dibutuhkan, saya bisa kirim foto bukti transfer di chat ini.");
+    }
+    lines.push("","Terima kasih 🙏");
+    return lines.join("\n");
   }
+
+  async function submitToAPI(){
+    if(!ORDER_API_URL) return {ok:false, skipped:true};
+    const payload={
+      token:ORDER_API_TOKEN,
+      name:(document.getElementById("name").value||"").trim(),
+      phone:(document.getElementById("phone").value||"").trim(),
+      dateTime:(document.getElementById("date").value||"")+" "+(document.getElementById("time").value||""),
+      category:(document.getElementById("category").value||""),
+      note:(document.getElementById("note").value||"").trim(),
+      paymentMethod:selectedBank?("Transfer "+selectedBank.key):"Transfer/QRIS",
+      bank:selectedBank?selectedBank.key:"",
+      bankRek:selectedBank?selectedBank.rek:"",
+      proofBase64:proofBase64||""
+    };
+    const res=await fetch(ORDER_API_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)});
+    return await res.json();
+  }
+
+  async function openWA(categoryFromButton, extraText){
+    let orderId="";
+    try{
+      const out=await submitToAPI();
+      if(out && out.ok && out.orderId) orderId=out.orderId;
+      if(out && out.ok) showToast("Order tercatat ✅");
+    }catch(e){}
+    const text=buildWAText(categoryFromButton, extraText, orderId);
+    window.open("https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(text),"_blank");
+  }
+
+  function tagHTML(status){
+    const s=String(status||"").toLowerCase();
+    if(s.includes("pending")) return '<span class="tag pending">Pending</span>';
+    if(s.includes("proses")||s.includes("process")) return '<span class="tag process">Proses</span>';
+    if(s.includes("selesai")||s.includes("done")) return '<span class="tag done">Selesai</span>';
+    if(s.includes("batal")||s.includes("cancel")) return '<span class="tag cancel">Batal</span>';
+    return '<span class="tag pending">'+(status||"Pending")+'</span>';
+  }
+
+  async function checkStatus(){
+    const orderId=(document.getElementById("orderIdInput").value||"").trim();
+    const box=document.getElementById("statusResult");
+    if(!orderId){ showToast("Isi Order ID"); box.style.display="none"; return; }
+    if(!ORDER_API_URL){
+      box.style.display="block";
+      box.innerHTML="<b>Belum aktif</b><div class='muted' style='margin-top:6px'>Fitur status butuh Google Sheet API. Untuk sementara, tanya status via WhatsApp.</div>";
+      return;
+    }
+    try{
+      const url=ORDER_API_URL+"?mode=status&orderId="+encodeURIComponent(orderId);
+      const res=await fetch(url);
+      const out=await res.json();
+      if(out && out.ok){
+        box.style.display="block";
+        box.innerHTML=`
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap">
+            <div><b>Order ID:</b> ${orderId}</div>
+            ${tagHTML(out.status||"Pending")}
+          </div>
+          <div class="sep"></div>
+          <div class="muted" style="font-size:12px">${out.note?("Catatan admin: "+out.note):"Tidak ada catatan."}</div>`;
+      }else{
+        box.style.display="block";
+        box.innerHTML="<b>Data tidak ditemukan</b><div class='muted' style='margin-top:6px'>Pastikan Order ID benar.</div>";
+      }
+    }catch(e){
+      box.style.display="block";
+      box.innerHTML="<b>Gagal cek status</b><div class='muted' style='margin-top:6px'>Coba lagi beberapa saat.</div>";
+    }
+  }
+
+  function openModal(title,imgSrc){
+    document.getElementById("modalTitle").textContent=title;
+    document.getElementById("modalImg").src=imgSrc;
+    document.getElementById("modal").classList.add("open");
+  }
+  function closeModal(){ document.getElementById("modal").classList.remove("open"); }
 </script>
 </body>
 </html>
