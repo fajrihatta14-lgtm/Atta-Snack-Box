@@ -1,5 +1,5 @@
 import React from 'react';
-import attaLogoImg from '../assets/images/atta_official_logo_1785294982475.jpg';
+import attaLogoImg from '@/src/assets/images/atta_official_logo_1785294982475.jpg';
 
 interface AttaLogoProps {
   className?: string;
