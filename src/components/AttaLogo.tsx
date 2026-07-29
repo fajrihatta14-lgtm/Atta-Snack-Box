@@ -1,5 +1,6 @@
 import React from 'react';
-import attaLogoImg from '@/src/assets/images/atta_official_logo_1785294982475.jpg';
+// Gunakan relatif path ini (naik satu folder ke src lalu masuk ke assets):
+import attaLogoImg from '../assets/images/atta_official_logo_1785294982475.jpg';
 
 interface AttaLogoProps {
   className?: string;
