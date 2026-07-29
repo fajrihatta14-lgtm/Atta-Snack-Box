@@ -159,7 +159,7 @@ export const BayarModal: React.FC<BayarModalProps> = ({ isOpen, onClose }) => {
             {/* QRIS Image Box */}
             <div className="bg-white p-3 sm:p-4 rounded-2xl flex flex-col items-center justify-center gap-2 w-full max-w-[280px] mx-auto shadow-2xl border border-gray-200">
               <img
-                src="/qris.jpg"
+                src="\public\images\qris_user_exact_1785299526882.jpeg"
                 alt="QRIS ATTA Snack Box Susi Taherawati"
                 className="w-full h-auto object-contain rounded-xl border border-gray-100 shadow-sm"
               />
