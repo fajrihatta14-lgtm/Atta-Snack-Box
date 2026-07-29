@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .font-serif-display {
+    font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  }
+  .font-playfair {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+  .font-sans-body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0B0C10;
+}
+::-webkit-scrollbar-thumb {
+  background: #232530;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3B3E4F;
+}
+
