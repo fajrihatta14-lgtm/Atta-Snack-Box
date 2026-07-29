@@ -4,8 +4,8 @@ export const INITIAL_MENU_LIST: MenuItem[] = [
   {
     id: 'snack-box-premium',
     title: 'Snack Box Premium',
-    price: 'Rp 18.000',
-    numericPrice: 18000,
+    price: 'Rp 20.000',
+    numericPrice: 20000,
     asinGurih: 'Asin/Gurih 1 pcs',
     manis: 'Manis 3 pcs',
     minuman: 'Minuman 1 pcs',
@@ -14,8 +14,8 @@ export const INITIAL_MENU_LIST: MenuItem[] = [
   {
     id: 'snack-box-vip',
     title: 'Snack Box VIP',
-    price: 'Rp 16.000',
-    numericPrice: 16000,
+    price: 'Rp 18.000',
+    numericPrice: 18000,
     asinGurih: 'Asin/Gurih 1 pcs',
     manis: 'Manis 2 pcs',
     minuman: 'Minuman 1 pcs'
@@ -23,8 +23,8 @@ export const INITIAL_MENU_LIST: MenuItem[] = [
   {
     id: 'snack-box-bisnis',
     title: 'Snack Box Bisnis',
-    price: 'Rp 14.000',
-    numericPrice: 14000,
+    price: 'Rp 16.000',
+    numericPrice: 16000,
     asinGurih: 'Asin/Gurih 1 pcs',
     manis: 'Manis 2 pcs',
     minuman: 'Minuman 1 pcs'
@@ -32,8 +32,8 @@ export const INITIAL_MENU_LIST: MenuItem[] = [
   {
     id: 'snack-box-ekonomis',
     title: 'Snack Box Ekonomis',
-    price: 'Rp 11.000',
-    numericPrice: 11000,
+    price: 'Rp 12.000',
+    numericPrice: 12000,
     asinGurih: 'Asin/Gurih 1 pcs',
     manis: 'Manis 2 pcs',
     minuman: 'Minuman 1 pcs'
@@ -41,8 +41,8 @@ export const INITIAL_MENU_LIST: MenuItem[] = [
   {
     id: 'snack-box-hemat',
     title: 'Snack Box Hemat',
-    price: 'Rp 7.000',
-    numericPrice: 7000,
+    price: 'Rp 8.000',
+    numericPrice: 8000,
     asinGurih: 'Asin/Gurih 1 pcs',
     manis: 'Manis 1 pcs',
     minuman: 'Minuman 1 pcs'
