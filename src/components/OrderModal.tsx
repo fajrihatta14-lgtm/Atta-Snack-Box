@@ -71,7 +71,13 @@ ${orderListText}
 Mohon konfirmasi ketersediaan slot dan instruksi pembayarannya. Terima kasih!`;
 
     const encoded = encodeURIComponent(message);
-    window.open('https://wa.me/6285263150282?text=' + encoded, '_blank');
+    const whatsappUrl = `https://wa.me/6285263150282?text=${encoded}`;
+
+    // Membuka tautan di tab baru tanpa terblokir pop-up blocker
+    const newWindow = window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    if (!newWindow) {
+      window.location.href = whatsappUrl;
+    }
   };
 
   return (
